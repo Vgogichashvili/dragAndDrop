@@ -1,5 +1,9 @@
 <section>
-  <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let timePeriod of timePeriods" cdkDrag>{{timePeriod}}</div>
+  <div class="drag-wrapper" *ngFor="let row of data; let index = index" [draggable]="true"
+    [class.dragging]="index === this.draggingIndex" (dragstart)="onDragStart(index)" (dragenter)="onDragEnter(index)"
+    (dragend)="onDragEnd()">
+    <div class="card">
+      {{ row }}
+    </div>
   </div>
 </section>
